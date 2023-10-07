@@ -1,9 +1,13 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+
+
+from todo_app.forms import TodoForm
+
 # Create your views here.
 
 
 def index(request):
-    return render(request,"index.html")
+    form = TodoForm()
+    return render(request,"index.html",{'form': form})
 
     
