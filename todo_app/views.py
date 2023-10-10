@@ -36,6 +36,12 @@ def update(request, todo_id):
     return render(request,'update.html',{'form': form})
 
 
+def delete(request,todo_id):
+    if request.method == "POST":
+        todolist.objects.get(id=todo_id).delete()
+        return redirect('index')
+
+
 
 
     
