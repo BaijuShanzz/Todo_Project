@@ -24,4 +24,18 @@ def index(request):
     
     return render(request,"index.html",{'form': form, 'todos':todos})
 
+
+def update(request, todo_id):
+    todo = todolist.objects.get(id=todo_id)
+    form = TodoForm(instance=todo)
+    if request.method == "POST":
+        form = TodoForm(request.POST, instance=todo)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+    return render(request,'update.html',{'form': form})
+
+
+
+
     
